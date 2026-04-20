@@ -1,0 +1,11 @@
+# Development Workspace
+
+This directory contains all source code for the AI learning website.
+
+## Structure
+- `components/` - React components (educational, interactive, layout)
+- `pages/` - Next.js pages and routing
+- `lib/` - Utility functions and shared logic
+- `styles/` - CSS and styling files
+- `types/` - TypeScript type definitions
+- `simulations/` - Interactive simulation components

@@ -1,0 +1,181 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+lerna-debug.log*
+.npm
+.yarn-integrity
+
+# Production builds
+/build
+/dist
+/.next/
+/out/
+/.nuxt
+/.vuepress/dist
+
+# Environment variables & Secrets
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.example.local
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets.json
+config/secrets*
+
+# IDE & Editors
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-*
+.atom/
+.brackets.json
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.tgz
+*.tar.gz
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+lib-cov
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output
+.coverage
+htmlcov/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Cache & temporary files
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+node_modules/.cache/
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Testing
+.jest/
+jest-coverage/
+__tests__/coverage/
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+test-results
+playwright/.cache/
+
+# Storybook
+storybook-static/
+.storybook/public
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+data/
+prisma/dev.db*
+
+# AI/ML & Data files (for educational content)
+*.h5
+*.pkl
+*.pickle
+*.model
+*.weights
+datasets/
+models/
+*.csv
+*.jsonl
+training_data/
+
+# Deployment & Platform files
+.vercel
+.netlify
+.firebase/
+.now
+.serverless/
+serverless_nextjs/
+.github/workflows/*.yml.bak
+
+# Cloudflare
+.wrangler/
+wrangler.toml.bak
+dist/
+worker-configuration.d.ts
+
+# Documentation builds
+docs/_build/
+site/
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+*.temp
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Next.js specific
+.next/
+out/
+.swc/
+
+# Turbo
+.turbo/
+
+# Tailwind
+.tailwindcss-*
+
+# Miscellaneous
+*.tgz
+*.tar.gz
+.history/
+.vscode-test/
+
+# Lock files (choose one strategy)
+# Uncomment if you prefer not to commit lock files:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml

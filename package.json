@@ -1,0 +1,71 @@
+{
+  "name": "devninja-ailearning",
+  "version": "0.1.0",
+  "description": "AI Learning Platform - Interactive educational website for AI concepts",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:cloudflare": "next build",
+    "start": "next start",
+    "preview": "cd out && python -m http.server 8000",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "ai",
+    "education",
+    "nlp",
+    "machine-learning",
+    "interactive",
+    "learning-platform"
+  ],
+  "author": "DevNinja.in",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.2.4",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slider": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.0.0",
+    "@radix-ui/react-tooltip": "^1.0.0",
+    "@types/d3": "^7.4.0",
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/three": "^0.158.0",
+    "autoprefixer": "^10.4.0",
+    "clsx": "^2.0.0",
+    "d3": "^7.8.0",
+    "framer-motion": "^10.16.0",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.294.0",
+    "mathjs": "^15.2.0",
+    "next": "^15.0.0",
+    "next-mdx-remote": "^6.0.0",
+    "postcss": "^8.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss": "^3.3.0",
+    "three": "^0.158.0",
+    "typescript": "^5.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/mathjs": "^9.4.1",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^15.0.0"
+  }
+}

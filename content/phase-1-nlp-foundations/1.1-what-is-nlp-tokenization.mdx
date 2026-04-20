@@ -1,0 +1,274 @@
+---
+title: "What is NLP? Tokenization and Vocabulary"
+phase: 1
+topic: 1.1
+difficulty: "beginner"
+estimatedTime: "20 minutes"
+learningObjectives:
+  - "Understand what Natural Language Processing accomplishes in the real world"
+  - "Learn how computers break text into processable pieces called tokens"
+  - "Explore different tokenization strategies and their trade-offs"
+  - "See tokenization in action with interactive demonstrations"
+prerequisites: []
+nextTopic: "1.2-word-embeddings-word2vec-glove"
+simulationUrl: "/simulations/tokenization"
+---
+
+# What is NLP? Tokenization and Vocabulary
+
+## Learning Objectives
+By the end of this lesson, you'll understand:
+- What Natural Language Processing accomplishes in everyday technology
+- How computers convert text into numbers they can process
+- The different ways to break text into tokens
+- Why tokenization choices affect AI system performance
+
+---
+
+## 🎣 **Pedagogical Approach: How This Lesson Works**
+
+This lesson uses proven educational design principles to help you learn effectively:
+
+### **The Hook: Start with Familiar Examples**
+We begin with AI tools you already use (Gmail, Google Translate, ChatGPT) to create immediate connection and relevance. You'll see how tokenization powers the technology you interact with daily.
+
+### **The Problem First: Present the Challenge Before the Solution**
+Instead of diving into tokenization mechanics, we first establish WHY it's necessary: computers work with numbers, not text. This creates genuine curiosity about the solution.
+
+### **Interactive Discovery: Learn by Doing**
+The embedded simulations let you experiment with tokenization in real-time. You'll see the effects of different approaches rather than just reading about them.
+
+### **Real-World Context: Connect Theory to Practice**
+Each concept is illustrated with actual applications (spam detection, product recommendations) so you understand the practical impact.
+
+**As you progress through this lesson, notice how each section builds on the previous challenge, making the learning feel natural and inevitable.**
+
+---
+
+## What is Natural Language Processing?
+
+> 🎣 **The Hook in Action**: Notice how we start with familiar AI tools you've likely used. This creates immediate relevance and shows you already interact with NLP systems daily.
+
+Think about all the ways you interact with text-based AI today:
+
+- **Gmail** automatically sorts your spam and suggests email completions
+- **Google Translate** converts text between 100+ languages instantly  
+- **Siri or Alexa** understand your spoken questions and respond appropriately
+- **Grammarly** suggests corrections and improvements to your writing
+- **ChatGPT** carries on conversations and helps with complex tasks
+
+All of these applications rely on **Natural Language Processing (NLP)** - the field that teaches computers to understand, interpret, and generate human language.
+
+> ⚠️ **The Problem First**: Here we establish the fundamental challenge before jumping to solutions. This creates genuine curiosity about how computers bridge the text-to-numbers gap.
+
+But here's the fundamental challenge: **computers don't naturally understand words like "hello," "fantastic," or "artificial intelligence."** Computers work with numbers, not text.
+
+So the very first step in any NLP system is converting text into numbers through a process called **tokenization**.
+
+---
+
+## The Tokenization Process
+
+Tokenization is the process of breaking text into smaller, meaningful pieces called **tokens**. Think of it like cutting a sentence into individual puzzle pieces that a computer can work with.
+
+### Why Tokenization Matters
+
+Consider this email subject line:
+```
+"Congratulations! You've won $1,000,000 in our lottery!"
+```
+
+A spam detection system needs to analyze this text. But how should it break it down?
+
+<TokenizationSimulation 
+  defaultText="Congratulations! You've won $1,000,000 in our lottery!"
+  encodings={['word', 'subword', 'character']}
+  showStatistics={true}
+/>
+
+> 🔬 **Interactive Discovery**: Instead of just telling you about tokenization differences, this simulation lets you experiment and see the effects immediately. Try changing the method above - each approach creates different numbers and types of tokens.
+
+Try changing the tokenization method in the simulation above. Notice how different approaches create different numbers and types of tokens.
+
+---
+
+## Real-World Example: Email Spam Detection
+
+Let's walk through how tokenization affects a practical AI system - email spam detection.
+
+### The Challenge
+Your email provider processes millions of emails daily and needs to automatically identify spam. The system must:
+1. Read the email text
+2. Convert it to numbers the AI can process
+3. Predict: spam or legitimate email?
+
+### Step 1: Word-Level Tokenization
+```
+Original: "Buy cheap medications online now!"
+Word tokens: ["Buy", "cheap", "medications", "online", "now", "!"]
+```
+
+**Advantages:**
+- Easy to understand and implement
+- Preserves word meaning
+- Works well for most languages with spaces
+
+**Challenges:**
+- What about punctuation? ("now!" vs "now" vs "!")
+- How to handle compound words? ("online" vs "on-line")
+- Unknown words break the system
+
+### Step 2: Subword Tokenization
+```
+Original: "Buy cheap medications online now!"
+Subword tokens: ["Buy", "cheap", "medic", "ations", "on", "line", "now", "!"]
+```
+
+**Advantages:**
+- Handles unknown words better
+- Captures word parts and meaning
+- More robust across different text types
+
+**Trade-offs:**
+- More complex to implement
+- Creates more tokens to process
+- Meaning might be less obvious
+
+### Step 3: Character-Level Tokenization
+```
+Original: "Buy cheap medications online now!"
+Character tokens: ["B", "u", "y", " ", "c", "h", "e", "a", "p", ...]
+```
+
+**Advantages:**
+- Never encounters unknown characters
+- Works across all languages
+- Very robust
+
+**Challenges:**
+- Much longer sequences to process
+- Loses word-level meaning
+- Harder for AI to learn patterns
+
+---
+
+## Impact on AI Performance
+
+The tokenization choice dramatically affects how well your AI system works:
+
+### Vocabulary Size
+- **Word tokens**: 50,000-100,000 unique tokens
+- **Subword tokens**: 30,000-50,000 unique tokens  
+- **Character tokens**: 100-1,000 unique tokens
+
+### Processing Speed
+- Fewer tokens = faster processing
+- More tokens = better detail but slower speed
+
+### Understanding Quality
+- Word-level captures meaning but struggles with new words
+- Subword-level balances meaning and flexibility
+- Character-level is robust but loses semantic information
+
+---
+
+## Try It Yourself
+
+Use the tokenization playground below to experiment with different text types:
+
+<TokenizationSimulation 
+  defaultText="The quick brown fox jumps over the lazy dog."
+  encodings={['word', 'subword', 'character']}
+  showStatistics={true}
+  showTokenDetails={true}
+/>
+
+**Experiments to try:**
+1. Paste a social media post with emojis and hashtags
+2. Try text in a different language
+3. Include numbers, URLs, or email addresses
+4. Compare formal writing vs. casual texting language
+
+Notice how the token counts and types change based on:
+- The text content
+- The tokenization method
+- Special characters and formatting
+
+---
+
+## Key Takeaways
+
+🎯 **Tokenization is the bridge between human language and computer processing**
+
+🔧 **Different tokenization strategies have different trade-offs:**
+- Word-level: Natural but limited vocabulary
+- Subword-level: Balanced approach, handles new words
+- Character-level: Robust but loses meaning
+
+📊 **Your choice affects everything downstream:**
+- Model size and speed
+- Ability to handle new vocabulary  
+- Quality of language understanding
+
+🚀 **Modern AI systems like GPT use sophisticated subword tokenization** to balance vocabulary size, processing speed, and semantic understanding.
+
+---
+
+## 🎓 **Learning Reflection: How the Pedagogical Techniques Worked**
+
+**Looking back at your learning journey through this lesson:**
+
+1. **The Hook Connected**: We started with familiar AI tools, making NLP feel relevant and immediate rather than abstract.
+
+2. **The Problem Created Urgency**: By establishing that computers can't understand text naturally, we made tokenization feel necessary, not arbitrary.
+
+3. **Interactive Discovery Reinforced**: The simulations let you experience tokenization differences firsthand, making the concepts stick through active learning.
+
+4. **Real-World Context Anchored**: The spam detection example showed practical impact, helping you understand why these choices matter.
+
+**This same pedagogical structure will guide every lesson - watch for these patterns as you progress!**
+
+---
+
+## What's Next?
+
+Now that you understand how computers break text into tokens, the next question is: **how do we convert these tokens into numbers that capture their meaning?**
+
+> 🔄 **Pedagogical Bridge**: Notice how we end with a new problem that creates curiosity for the next lesson - maintaining your learning momentum.
+
+In the next lesson, we'll explore **word embeddings** - the mathematical representations that encode semantic relationships between words. You'll discover how words like "king" and "queen" can be positioned in mathematical space to capture their relationship.
+
+**Continue to:** [1.2 Word Embeddings: Word2Vec and GloVe →](./1.2-word-embeddings-word2vec-glove)
+
+---
+
+## Quick Knowledge Check
+
+Before moving on, make sure you can answer these questions:
+
+1. What is tokenization and why is it necessary in NLP?
+2. What are the three main approaches to tokenization we covered?
+3. How might tokenization choice affect a real application like machine translation?
+4. In what scenarios might character-level tokenization be preferred over word-level?
+
+*Think through these questions, then continue to explore word embeddings!*
+
+---
+
+## Additional Resources
+
+**Interactive Simulations:**
+- [Tokenization Playground](/simulations/tokenization) - Experiment with different tokenization methods
+- [Text Preprocessing Demo](/simulations/preprocessing) - See the full text-to-numbers pipeline
+
+**Real-World Applications:**
+- Email spam detection systems
+- Search engines and information retrieval
+- Machine translation services
+- Chatbots and virtual assistants
+
+**Technical Deep Dive:**
+- Byte Pair Encoding (BPE) algorithm
+- SentencePiece tokenization
+- Handling multilingual text
+- Tokenization in transformer models

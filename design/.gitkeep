@@ -1,0 +1,9 @@
+# Visual Designer Workspace
+
+This directory contains all design assets and specifications for the AI learning website.
+
+## Structure
+- `design-system.md` - Color scheme, typography, and component specifications
+- `mockups/` - UI/UX mockups and wireframes
+- `assets/` - Icons, images, and visual elements
+- `guidelines/` - Design guidelines and standards

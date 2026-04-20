@@ -1,0 +1,301 @@
+---
+title: "Phase 1: NLP Foundations"
+phase: 1
+difficulty: "beginner"
+estimatedTime: "2 hours"
+description: "Master the fundamental concepts that power all modern language AI systems"
+learningObjectives:
+  - "Understand how computers convert text into processable tokens and numbers"
+  - "Learn how word embeddings capture semantic relationships in vector space"
+  - "Grasp why sequence order is crucial for language understanding"
+  - "Explore how RNNs and LSTMs process sequential information"
+prerequisites: []
+nextPhase: "phase-2-transformers"
+---
+
+# Phase 1: NLP Foundations
+
+## Welcome to AI Learning Foundations
+
+Before diving into transformers, large language models, and cutting-edge AI systems, you need to understand the foundational concepts that make it all possible. This phase will take you from complete beginner to having a solid understanding of how computers process and understand human language.
+
+**What You'll Build**: By the end of this phase, you'll understand the core principles behind every AI language system from Google Translate to ChatGPT.
+
+---
+
+## Learning Journey Overview
+
+<PhaseOverview 
+  currentPhase={1}
+  totalPhases={11}
+  completedLessons={0}
+  totalLessons={4}
+  estimatedTime="2 hours"
+/>
+
+### The Foundation Stack
+
+Each lesson builds on the previous one, creating a complete understanding:
+
+<FoundationStack 
+  layers={[
+    {level: 4, title: "Sequential Processing", description: "RNNs & LSTMs handle word order and memory"},
+    {level: 3, title: "Sequence Importance", description: "Why word order changes everything"},
+    {level: 2, title: "Word Embeddings", description: "Converting words to meaningful numbers"},
+    {level: 1, title: "Tokenization", description: "Breaking text into computer-readable pieces"}
+  ]}
+  showProgression={true}
+/>
+
+---
+
+## Lesson Structure
+
+### 1.1 What is NLP? Tokenization and Vocabulary
+**The Starting Point**: How do computers read text?
+
+<LessonCard 
+  number="1.1"
+  title="What is NLP? Tokenization and Vocabulary" 
+  difficulty="beginner"
+  time="20 minutes"
+  status="available"
+  description="Learn how computers break text into processable pieces and why tokenization choices matter for AI performance."
+  keyTopics={["Text tokenization", "Vocabulary building", "Real-world applications"]}
+  practicalExample="Email spam detection system"
+  href="./1.1-what-is-nlp-tokenization"
+/>
+
+**Why Start Here**: You can't understand language AI without first understanding how computers see text. This lesson shows you exactly how your messages, emails, and documents get converted into something an AI can work with.
+
+### 1.2 Word Embeddings: Word2Vec and GloVe  
+**The Meaning Layer**: How do numbers capture word relationships?
+
+<LessonCard 
+  number="1.2"
+  title="Word Embeddings: Word2Vec and GloVe"
+  difficulty="beginner" 
+  time="25 minutes"
+  status="locked"
+  description="Discover how AI learns that 'king' and 'queen' are related, and how vector math can solve analogies."
+  keyTopics={["Word2Vec algorithms", "GloVe methodology", "Vector arithmetic", "Semantic relationships"]}
+  practicalExample="Amazon product recommendation engine"
+  href="./1.2-word-embeddings-word2vec-glove"
+  prerequisites={["1.1"]}
+/>
+
+**The Magic Moment**: See how mathematical operations like `king - man + woman = queen` actually work, and understand why this breakthrough enabled modern AI.
+
+### 1.3 Sequence Importance and Context
+**The Order Problem**: Why does word arrangement matter so much?
+
+<LessonCard 
+  number="1.3" 
+  title="Sequence Importance and Context"
+  difficulty="beginner"
+  time="30 minutes" 
+  status="locked"
+  description="Understand why 'dog bites man' means something completely different from 'man bites dog'."
+  keyTopics={["Sequential dependencies", "Context windows", "Bag-of-words limitations"]}
+  practicalExample="Google Search query understanding"
+  href="./1.3-sequence-importance-context"
+  prerequisites={["1.2"]}
+/>
+
+**The Insight**: Discover why early AI systems failed at language and how understanding sequence unlocked modern capabilities.
+
+### 1.4 RNNs and LSTMs: Sequential Processing
+**The Memory Solution**: How do AI systems remember context?
+
+<LessonCard 
+  number="1.4"
+  title="RNNs and LSTMs: Sequential Processing"  
+  difficulty="beginner"
+  time="35 minutes"
+  status="locked"
+  description="Learn how neural networks process sequences and maintain memory across long passages of text."
+  keyTopics={["RNN architecture", "LSTM gates", "Vanishing gradients", "Memory management"]}
+  practicalExample="Google Translate evolution"
+  href="./1.4-rnns-lstms-sequence-processing"
+  prerequisites={["1.3"]}
+/>
+
+**The Breakthrough**: Understand the architecture that powered AI breakthroughs from 2010-2017, and why it led to transformers.
+
+---
+
+## Real-World Applications You'll Understand
+
+After completing this phase, you'll understand the fundamentals behind:
+
+<ApplicationGrid 
+  applications={[
+    {
+      name: "Email Spam Detection",
+      description: "How tokenization and embeddings identify suspicious messages",
+      phase1Concepts: ["Tokenization", "Word embeddings", "Sequence patterns"],
+      difficulty: "Simple"
+    },
+    {
+      name: "Google Search",
+      description: "Why search understands 'apple pie recipe' vs 'apple computer pie chart recipe'", 
+      phase1Concepts: ["Context windows", "Semantic similarity", "Sequence understanding"],
+      difficulty: "Intermediate"
+    },
+    {
+      name: "Language Translation",
+      description: "How AI translates between languages while preserving meaning",
+      phase1Concepts: ["Sequential processing", "Memory management", "Context preservation"],
+      difficulty: "Complex"
+    },
+    {
+      name: "Autocomplete Systems",
+      description: "Why your phone suggests contextually appropriate next words",
+      phase1Concepts: ["All Phase 1 concepts combined"],
+      difficulty: "Advanced"
+    }
+  ]}
+  showConceptMapping={true}
+/>
+
+---
+
+## Interactive Learning Elements
+
+Each lesson includes hands-on simulations to reinforce learning:
+
+### Tokenization Playground
+Experiment with different text types and see how tokenization choices affect processing:
+- Social media posts with emojis
+- Technical documentation  
+- Multiple languages
+- Code snippets
+
+### Word Embedding Explorer
+Visualize semantic relationships in vector space:
+- Find words similar to your hometown
+- Solve analogy puzzles
+- Explore word clusters
+- Compare Word2Vec vs GloVe
+
+### Sequence Order Laboratory
+See how word arrangement changes meaning:
+- Sentence scrambling experiments
+- Context prediction games
+- Ambiguity resolution challenges
+
+### LSTM Memory Tracker
+Watch how neural networks maintain context:
+- Gate activation patterns
+- Memory state evolution  
+- Long-range dependency tests
+- Performance comparisons
+
+---
+
+## Knowledge Building Path
+
+<LearningPath 
+  steps={[
+    {
+      step: "Foundation",
+      description: "Start with tokenization - how computers read text",
+      outcome: "Understand the text-to-numbers pipeline"
+    },
+    {
+      step: "Meaning", 
+      description: "Learn word embeddings - how numbers capture relationships",
+      outcome: "See why 'king' and 'queen' are mathematically related"
+    },
+    {
+      step: "Context",
+      description: "Explore sequence importance - why order matters",
+      outcome: "Understand why bag-of-words approaches fail"
+    },
+    {
+      step: "Memory",
+      description: "Master RNNs/LSTMs - how AI maintains context",
+      outcome: "Grasp the architecture that enabled modern NLP"
+    }
+  ]}
+  showConnections={true}
+/>
+
+Each concept builds on the previous one, creating a solid foundation for understanding transformers and large language models in later phases.
+
+---
+
+## Assessment and Progress
+
+### Knowledge Checks
+Each lesson includes immediate feedback:
+- ✅ Concept validation questions
+- 🧪 Interactive experiments
+- 💡 Real-world application exercises
+- 🎯 Hands-on simulations
+
+### Phase Completion Requirements
+- [ ] Complete all 4 lessons in sequence
+- [ ] Pass knowledge checks with 80%+ accuracy  
+- [ ] Complete at least 2 interactive simulations
+- [ ] Demonstrate understanding through concept connections
+
+<ProgressTracker 
+  currentLesson="1.1"
+  completedLessons={0}
+  totalLessons={4}
+  estimatedTimeRemaining="2 hours"
+  nextMilestone="Understanding tokenization"
+/>
+
+---
+
+## Getting Started
+
+Ready to understand how AI systems process human language? 
+
+**Your first step**: Learn how computers break text into processable pieces through tokenization. This fundamental process powers everything from search engines to chatbots.
+
+<StartLearningButton 
+  href="./1.1-what-is-nlp-tokenization"
+  text="Start with Tokenization →"
+  description="Begin your journey into NLP foundations"
+/>
+
+---
+
+## Phase 1 Quick Reference
+
+Once you've completed lessons, return here for quick concept reviews:
+
+<ConceptQuickReference 
+  concepts={[
+    {
+      name: "Tokenization",
+      definition: "Breaking text into computer-processable pieces",
+      keyInsight: "Different strategies (word/subword/character) have different trade-offs",
+      realWorldUse: "All NLP systems start with tokenization"
+    },
+    {
+      name: "Word Embeddings", 
+      definition: "Converting words to meaningful numerical vectors",
+      keyInsight: "Similar words get similar vectors in mathematical space",
+      realWorldUse: "Powers search, recommendations, and translation"
+    },
+    {
+      name: "Sequence Importance",
+      definition: "Word order carries crucial meaning information", 
+      keyInsight: "Bag-of-words loses essential context and grammar",
+      realWorldUse: "Enables coherent language understanding"
+    },
+    {
+      name: "RNNs/LSTMs",
+      definition: "Neural networks designed for sequential data processing",
+      keyInsight: "Gates allow selective memory management across sequences", 
+      realWorldUse: "Pre-transformer foundation for language AI"
+    }
+  ]}
+  expandable={true}
+/>
+
+**🎓 Ready to begin? Start your NLP foundations journey with tokenization!**

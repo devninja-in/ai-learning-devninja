@@ -1,0 +1,328 @@
+---
+title: "Word Embeddings: Word2Vec and GloVe"
+phase: 1
+topic: 1.2
+difficulty: "beginner"
+estimatedTime: "25 minutes"
+learningObjectives:
+  - "Understand why computers need numerical representations of words"
+  - "Learn how Word2Vec captures semantic relationships in vector space"
+  - "Explore GloVe's global statistical approach to embeddings"
+  - "See how semantic similarity emerges from mathematical operations"
+prerequisites: ["1.1-what-is-nlp-tokenization"]
+nextTopic: "1.3-sequence-importance-context"
+simulationUrl: "/simulations/word-embeddings"
+---
+
+# Word Embeddings: Word2Vec and GloVe
+
+## Learning Objectives
+By the end of this lesson, you'll understand:
+- Why word embeddings are crucial for AI language understanding
+- How Word2Vec learns semantic relationships from context
+- How GloVe combines local and global statistical information
+- Why vector mathematics can capture meaning relationships
+
+---
+
+## The Problem: From Tokens to Meaning
+
+In our last lesson, we learned how to break text into tokens. But there's still a fundamental problem: **how do we represent the meaning of words as numbers?**
+
+Consider these tokens from a product review:
+```
+["This", "phone", "is", "amazing", "!"]
+```
+
+We could assign each word a simple ID number:
+- "This" = 1
+- "phone" = 2  
+- "is" = 3
+- "amazing" = 4
+- "!" = 5
+
+But this approach has a critical flaw: **it treats all words as equally different**. The computer has no way to know that:
+- "phone" and "smartphone" are related
+- "amazing" and "fantastic" have similar meanings
+- "cat" and "dog" are both animals
+
+**Word embeddings solve this by placing semantically similar words close together in a mathematical vector space.**
+
+---
+
+## Real-World Example: Amazon Product Recommendations
+
+Let's see how word embeddings power Amazon's product recommendation system.
+
+### The Challenge
+When you search for "wireless headphones," Amazon needs to understand that you might also be interested in:
+- "bluetooth earbuds" 
+- "noise-canceling headsets"
+- "wireless audio devices"
+
+Without embeddings, these would be completely different searches with no connection.
+
+### Step 1: Learning from Context (Word2Vec)
+
+Word2Vec learns word meanings by analyzing how words appear together in product descriptions:
+
+<WordEmbeddingExplorer 
+  defaultWords={['headphones', 'earbuds', 'bluetooth', 'wireless', 'audio', 'music']}
+  showSimilarity={true}
+  highlightRelationships={true}
+/>
+
+**The Key Insight**: Words that appear in similar contexts tend to have similar meanings.
+
+From millions of product descriptions like:
+- "Wireless **headphones** with **bluetooth** technology"
+- "**Bluetooth** **earbuds** for wireless **music**"
+- "Noise-canceling **headphones** for **audio** enthusiasts"
+
+Word2Vec learns that "headphones," "earbuds," and "bluetooth" are semantically related because they consistently appear together.
+
+### Step 2: Vector Mathematics Captures Meaning
+
+Once trained, these relationships become mathematical operations:
+
+```
+vector("headphones") + vector("wireless") ≈ vector("bluetooth_headphones")
+vector("earbuds") + vector("noise-canceling") ≈ vector("noise_canceling_earbuds")
+```
+
+This allows Amazon to recommend products even when the search terms don't exactly match the product descriptions.
+
+---
+
+## Word2Vec: Learning from Local Context
+
+Word2Vec revolutionized NLP by learning embeddings from word co-occurrence patterns. There are two main approaches:
+
+### Skip-gram: Predicting Context from Words
+
+Given the sentence: "The quick brown fox jumps over the lazy dog"
+
+Skip-gram asks: *"If I see the word 'fox', what other words are likely to appear nearby?"*
+
+<Word2VecDemo 
+  sentence="The quick brown fox jumps over the lazy dog"
+  targetWord="fox"
+  windowSize={2}
+  method="skipgram"
+/>
+
+**Training Process:**
+1. Choose a target word: "fox"
+2. Look at surrounding words within a window: ["quick", "brown", "jumps", "over"]  
+3. Train to predict these context words
+4. Adjust the vector for "fox" to better predict its typical neighbors
+
+### CBOW (Continuous Bag of Words): Predicting Words from Context
+
+CBOW flips this around, asking: *"Given the context words ['quick', 'brown', 'jumps', 'over'], what word appears in the middle?"*
+
+<Word2VecDemo 
+  sentence="The quick brown fox jumps over the lazy dog"
+  targetWord="fox"
+  windowSize={2}
+  method="cbow"
+/>
+
+**Why This Works:**
+- Words with similar meanings appear in similar contexts
+- "King" and "queen" both appear near words like "royal," "crown," "palace"
+- "Running" and "jogging" both appear near "fast," "exercise," "fitness"
+
+---
+
+## GloVe: Global Vectors for Word Representation
+
+While Word2Vec focuses on local context windows, GloVe takes a different approach by analyzing **global statistical information** across the entire corpus.
+
+### The Global Statistics Approach
+
+GloVe builds a **word co-occurrence matrix** that captures how often words appear together across all documents:
+
+<GloVeVisualization 
+  corpus={[
+    "I love ice cream on hot days",
+    "Ice cream is cold and sweet", 
+    "Hot weather makes me crave cold drinks",
+    "Sweet treats are perfect for hot summer days"
+  ]}
+  showCooccurrenceMatrix={true}
+  targetWords={['ice', 'cream', 'hot', 'cold']}
+/>
+
+**Key Insight**: The ratio of co-occurrence probabilities reveals semantic relationships.
+
+For example:
+- P(solid|ice) / P(solid|steam) is large (ice is often solid, steam is not)
+- P(gas|steam) / P(gas|ice) is large (steam is often gas, ice is not)  
+- P(water|ice) / P(water|steam) ≈ 1 (both relate to water equally)
+
+### Combining Local and Global Information
+
+GloVe optimizes embeddings to satisfy:
+```
+word_i · word_j = log(P(i appears with j))
+```
+
+This means the dot product between word vectors equals the logarithm of their co-occurrence probability.
+
+---
+
+## The Magic of Vector Arithmetic
+
+Once trained, word embeddings reveal surprising semantic relationships through simple vector mathematics:
+
+<VectorArithmeticDemo 
+  examples={[
+    {operation: "king - man + woman", result: "queen", explanation: "Gender relationship transfer"},
+    {operation: "paris - france + italy", result: "rome", explanation: "Capital city relationships"},
+    {operation: "good - bad + terrible", result: "excellent", explanation: "Sentiment intensity mapping"},
+    {operation: "walking - walk + run", result: "running", explanation: "Grammatical form consistency"}
+  ]}
+/>
+
+**Why This Works:**
+- Vector differences capture **relationships** (king - man = "royalty without male gender")
+- Vector addition applies those relationships (+ woman = "royalty with female gender")
+- The result points to the word that best embodies that combined meaning
+
+### Exploring Semantic Neighborhoods
+
+Use the visualization below to explore how words cluster in embedding space:
+
+<EmbeddingSpaceExplorer 
+  categories={['animals', 'food', 'technology', 'emotions']}
+  showClusters={true}
+  interactive={true}
+  similarity_threshold={0.7}
+/>
+
+Notice how:
+- Animals cluster together (cat, dog, bird, fish)
+- Technology terms form their own region (computer, software, internet)
+- Emotional words group by sentiment (happy, joyful vs sad, angry)
+
+---
+
+## Comparing Word2Vec vs GloVe
+
+| Aspect | Word2Vec | GloVe |
+|--------|----------|--------|
+| **Training Data** | Local context windows | Global co-occurrence statistics |
+| **Computation** | Neural network (slower) | Matrix factorization (faster) |
+| **Memory Usage** | Lower during training | Higher (stores full matrix) |
+| **Performance** | Better on semantic tasks | Better on syntactic tasks |
+| **Rare Words** | Struggles with infrequent words | Better handling via global stats |
+
+<ModelComparisonDemo 
+  models={['word2vec', 'glove']}
+  tasks={['semantic_similarity', 'analogy_completion', 'syntactic_relationships']}
+  showPerformance={true}
+/>
+
+**When to Use Each:**
+- **Word2Vec**: When you have limited computational resources and care most about semantic relationships
+- **GloVe**: When you want faster training and better syntactic understanding
+
+---
+
+## Impact on Modern AI Systems
+
+Word embeddings revolutionized NLP and remain fundamental to modern AI:
+
+### Direct Applications
+- **Search engines**: Understanding query intent and document relevance
+- **Recommendation systems**: Finding similar products or content
+- **Machine translation**: Aligning words across languages
+- **Sentiment analysis**: Capturing emotional nuances in text
+
+### Foundation for Modern Models
+- **BERT**: Uses contextualized embeddings (words have different vectors in different contexts)
+- **GPT**: Builds on embedding principles for text generation
+- **ChatGPT**: Leverages semantic understanding for conversation
+
+**Evolution Path:**
+Static Embeddings (Word2Vec/GloVe) → Contextualized Embeddings (BERT) → Large Language Models (GPT) → Modern AI Assistants
+
+---
+
+## Try It Yourself
+
+Experiment with word embeddings using real data:
+
+<WordEmbeddingPlayground 
+  pretrainedModels={['word2vec-google-news', 'glove-wikipedia']}
+  allowUpload={true}
+  tasks={['find_similar', 'vector_arithmetic', 'visualize_clusters']}
+/>
+
+**Suggested Experiments:**
+1. Find words similar to your name or hometown
+2. Try analogy puzzles: "Tokyo is to Japan as Paris is to ___"
+3. Explore industry-specific terms (medical, legal, technical)
+4. Compare results between Word2Vec and GloVe models
+
+---
+
+## Key Takeaways
+
+🎯 **Embeddings bridge the gap between human language and computer mathematics**
+
+🔍 **Context determines meaning**: Words appearing in similar contexts get similar vectors
+
+📊 **Two complementary approaches**:
+- Word2Vec: Local context patterns  
+- GloVe: Global statistical relationships
+
+🧮 **Vector arithmetic captures semantic relationships** like analogies and word transformations
+
+🚀 **Foundation for all modern NLP**: Every AI language model builds on embedding principles
+
+---
+
+## What's Next?
+
+You now understand how individual words get meaningful numerical representations. But language isn't just individual words - **the order and context matter tremendously**.
+
+Why does "The cat sat on the mat" mean something completely different from "The mat sat on the cat"? 
+
+In the next lesson, we'll explore **sequence importance and context** - how AI systems understand that word order carries crucial meaning information.
+
+**Continue to:** [1.3 Sequence Importance and Context →](./1.3-sequence-importance-context)
+
+---
+
+## Quick Knowledge Check
+
+Before moving on, make sure you understand:
+
+1. What problem do word embeddings solve that simple word IDs cannot?
+2. How does Word2Vec learn that "king" and "queen" are related?
+3. What advantage does GloVe's global approach provide over local context windows?
+4. Why does vector arithmetic like "king - man + woman ≈ queen" work?
+
+*Understanding these concepts will help you grasp how modern language models process meaning!*
+
+---
+
+## Additional Resources
+
+**Interactive Demonstrations:**
+- [Word Embedding Explorer](/simulations/word-embeddings) - Visualize semantic relationships
+- [Vector Arithmetic Playground](/simulations/vector-math) - Experiment with word relationships
+
+**Real-World Applications:**
+- Product recommendation engines
+- Document similarity systems  
+- Cross-language information retrieval
+- Content classification and tagging
+
+**Technical Deep Dive:**
+- Skip-gram and CBOW training algorithms
+- Negative sampling optimization techniques
+- Subword embeddings (FastText)
+- Multilingual embedding alignment

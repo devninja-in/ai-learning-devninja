@@ -1,0 +1,9 @@
+# Content Expert Workspace
+
+This directory contains all educational content for the AI learning website.
+
+## Structure
+- `strategy.md` - Learning objectives and content strategy
+- `phases/` - Content organized by learning phases
+- `assessments/` - Quizzes and interactive assessments
+- `resources/` - Additional learning resources
