@@ -1,18 +1,3 @@
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [
-      require('remark-gfm'),
-      require('remark-math'),
-    ],
-    rehypePlugins: [
-      [require('rehype-highlight'), { subset: false }],
-      require('rehype-katex'),
-    ],
-    providerImportSource: '@mdx-js/react',
-  },
-});
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -24,21 +9,14 @@ const nextConfig = {
 
   experimental: {
     optimizePackageImports: ['d3', 'three', 'framer-motion'],
-    mdxRs: true,
   },
 
-  // MDX page extensions
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  // Standard page extensions for React components
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
 
-  // Image optimization for educational content
+  // Image optimization disabled for static export
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'ailearning.devninja.in',
-      },
-    ],
-    formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
   },
 
   // Performance optimizations for educational content
@@ -67,4 +45,4 @@ const nextConfig = {
   // Security headers now handled by public/_headers for Cloudflare Pages
 };
 
-module.exports = withMDX(nextConfig);
+module.exports = nextConfig;
