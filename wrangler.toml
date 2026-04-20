@@ -1,2 +1,18 @@
 # wrangler.toml
-name = 'ai-learning-devninja'
+name = "ai-learning-devninja"
+compatibility_date = "2024-01-01"
+
+# Static site deployment configuration
+[assets]
+directory = "./dist"
+
+# Environment variables
+[vars]
+NEXT_TELEMETRY_DISABLED = "1"
+
+# Production environment
+[env.production]
+name = "ai-learning-devninja"
+
+[env.production.vars]
+NODE_ENV = "production"
