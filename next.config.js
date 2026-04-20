@@ -1,27 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  outputFileTracingRoot: __dirname,
-
-  // Static export for Cloudflare Pages
-  output: 'export',
+  distDir: 'dist',
   trailingSlash: true,
-
-  experimental: {
-    optimizePackageImports: ['d3', 'three', 'framer-motion'],
-  },
-
-  // Standard page extensions for React components
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
-
-  // Image optimization disabled for static export
   images: {
-    unoptimized: true,
+    unoptimized: true
   },
-
-  // Performance optimizations for educational content
-  poweredByHeader: false,
-  compress: true,
+  experimental: {
+    optimizePackageImports: ['d3', 'three', 'framer-motion', 'lucide-react']
+  },
 
   // Webpack configuration for D3 and visualization libraries
   webpack: (config, { dev, isServer }) => {
@@ -41,8 +27,6 @@ const nextConfig = {
 
     return config;
   },
+}
 
-  // Security headers now handled by public/_headers for Cloudflare Pages
-};
-
-module.exports = nextConfig;
+module.exports = nextConfig
