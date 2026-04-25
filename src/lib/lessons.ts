@@ -24,6 +24,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'peft-lora': () => import('@/content/lessons/peft-lora/content'),
   'multimodal-ai': () => import('@/content/lessons/multimodal-ai/content'),
   'model-internals': () => import('@/content/lessons/model-internals/content'),
+  'quantization': () => import('@/content/lessons/quantization/content'),
 }
 
 export function getAvailableSlugs(): string[] {
