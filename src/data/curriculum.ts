@@ -390,7 +390,7 @@ export const lessons: LessonMeta[] = [
     level: 'agents-frontier',
     estimatedMinutes: 45,
     prerequisites: ['mlops-deployment', 'agent-frameworks'],
-    status: 'coming-soon',
+    status: 'ready',
   },
 ];
 

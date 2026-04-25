@@ -34,6 +34,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'reasoning-models': () => import('@/content/lessons/reasoning-models/content'),
   'ai-safety-ethics': () => import('@/content/lessons/ai-safety-ethics/content'),
   'new-architectures': () => import('@/content/lessons/new-architectures/content'),
+  'production-ai-systems': () => import('@/content/lessons/production-ai-systems/content'),
 }
 
 export function getAvailableSlugs(): string[] {
