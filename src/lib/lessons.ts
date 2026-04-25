@@ -7,6 +7,7 @@ export interface LessonContent {
 const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'what-is-ai': () => import('@/content/lessons/what-is-ai/content'),
   'tokenization': () => import('@/content/lessons/tokenization/content'),
+  'math-intuition': () => import('@/content/lessons/math-intuition/content'),
   'neural-networks': () => import('@/content/lessons/neural-networks/content'),
 }
 

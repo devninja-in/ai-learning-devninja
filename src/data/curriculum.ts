@@ -102,7 +102,7 @@ export const lessons: LessonMeta[] = [
     level: 'foundations',
     estimatedMinutes: 30,
     prerequisites: [],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 3,
