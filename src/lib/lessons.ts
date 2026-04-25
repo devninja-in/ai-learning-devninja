@@ -21,6 +21,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'pretraining-finetuning': () => import('@/content/lessons/pretraining-finetuning/content'),
   'rlhf-alignment': () => import('@/content/lessons/rlhf-alignment/content'),
   'prompt-engineering': () => import('@/content/lessons/prompt-engineering/content'),
+  'peft-lora': () => import('@/content/lessons/peft-lora/content'),
 }
 
 export function getAvailableSlugs(): string[] {
