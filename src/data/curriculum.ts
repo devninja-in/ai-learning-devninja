@@ -204,7 +204,7 @@ export const lessons: LessonMeta[] = [
     level: 'deep-learning',
     estimatedMinutes: 40,
     prerequisites: ['attention-mechanism'],
-    status: 'coming-soon',
+    status: 'ready',
   },
 
   // Level 3: LLMs & Modern AI
