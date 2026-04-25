@@ -1,410 +1,180 @@
-'use client'
-
-import { useState } from 'react'
-import { Brain, Code, Zap, Play, BookOpen, Target, Gauge, Settings, Menu, X } from 'lucide-react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-
-const simulations = [
-  {
-    id: 'tokenization',
-    title: 'Tokenization Playground',
-    description: 'Explore how text is broken down into tokens for NLP processing',
-    icon: Code,
-    href: '/simulations/tokenization',
-    difficulty: 'Beginner',
-    category: 'NLP Foundations'
-  },
-  {
-    id: 'embeddings',
-    title: 'Word Embeddings',
-    description: 'Visualize word vectors and semantic relationships in vector space',
-    icon: Target,
-    href: '/simulations/embeddings',
-    difficulty: 'Beginner',
-    category: 'NLP Foundations'
-  },
-  {
-    id: 'attention',
-    title: 'Attention Mechanism',
-    description: 'Interactive demonstration of attention weights and patterns',
-    icon: Zap,
-    href: '/simulations/attention',
-    difficulty: 'Intermediate',
-    category: 'Transformers'
-  },
-  {
-    id: 'transformer',
-    title: 'Transformer Architecture',
-    description: 'Step-through visualization of transformer layers and operations',
-    icon: Brain,
-    href: '/simulations/transformer',
-    difficulty: 'Advanced',
-    category: 'Transformers'
-  },
-  {
-    id: 'language-model',
-    title: 'Language Model Playground',
-    description: 'Experiment with text generation and prediction probabilities',
-    icon: BookOpen,
-    href: '/simulations/language-model',
-    difficulty: 'Intermediate',
-    category: 'Language Models'
-  },
-  {
-    id: 'rlhf',
-    title: 'RLHF Training',
-    description: 'Visualize reinforcement learning from human feedback process',
-    icon: Play,
-    href: '/simulations/rlhf',
-    difficulty: 'Advanced',
-    category: 'RLHF'
-  },
-  {
-    id: 'quantization',
-    title: 'Quantization Laboratory',
-    description: 'Explore quality vs size trade-offs and optimization techniques',
-    icon: Gauge,
-    href: '/simulations/quantization',
-    difficulty: 'Advanced',
-    category: 'Model Optimization'
-  },
-  {
-    id: 'agent-frameworks',
-    title: 'Agent Frameworks Mastery',
-    description: 'Master LangChain, LlamaIndex, CrewAI, and other frameworks',
-    icon: Brain,
-    href: '/simulations/agent-frameworks',
-    difficulty: 'Advanced',
-    category: 'Agent Frameworks'
-  },
-  {
-    id: 'agent-flow',
-    title: 'Agent Flow & Tool Selection',
-    description: 'Interactive demonstration of how AI agents process queries and select tools',
-    icon: Settings,
-    href: '/simulations/agent-flow',
-    difficulty: 'Advanced',
-    category: 'Agent Systems'
-  }
-]
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-}
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { levels, getLevelLessons, getLessonBySlug } from '@/data/curriculum';
 
 export default function HomePage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const featuredSlugs = ['what-is-ai', 'neural-networks', 'agents-reasoning'];
+  const featuredLessons = featuredSlugs
+    .map(slug => getLessonBySlug(slug))
+    .filter(Boolean);
 
   return (
     <div className="min-h-screen">
-      {/* Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-2">
-                <Brain className="h-8 w-8 text-sky-600" />
-                <span className="text-xl font-bold text-gray-900">DevNinja</span>
-                <span className="text-sm bg-sky-100 text-sky-700 px-2 py-1 rounded-full">AI Learning</span>
-              </Link>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-900 hover:text-sky-600 px-3 py-2 text-sm font-medium">
-                Home
-              </Link>
-              <Link href="#simulations" className="text-gray-600 hover:text-sky-600 px-3 py-2 text-sm font-medium">
-                Simulations
-              </Link>
-              <Link href="https://devninja.in" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-sky-600 px-3 py-2 text-sm font-medium">
-                DevNinja.in
-              </Link>
-              <Link href="https://tools.devninja.in" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-sky-600 px-3 py-2 text-sm font-medium">
-                Developer Tools
-              </Link>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-sky-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
-                aria-expanded={mobileMenuOpen}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                <span className="sr-only">{mobileMenuOpen ? 'Close' : 'Open'} main menu</span>
-                {mobileMenuOpen ? (
-                  <X className="block h-6 w-6" />
-                ) : (
-                  <Menu className="block h-6 w-6" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden" id="mobile-menu">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
-                <Link
-                  href="/"
-                  className="text-gray-900 hover:text-sky-600 block px-3 py-2 text-base font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="#simulations"
-                  className="text-gray-600 hover:text-sky-600 block px-3 py-2 text-base font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Simulations
-                </Link>
-                <Link
-                  href="https://devninja.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-sky-600 block px-3 py-2 text-base font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  DevNinja.in
-                </Link>
-                <Link
-                  href="https://tools.devninja.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-sky-600 block px-3 py-2 text-base font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Developer Tools
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
-
       {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative overflow-hidden bg-gradient-to-r from-sky-600 via-sky-500 to-blue-700 text-white"
-      >
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <motion.h1
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-4xl sm:text-6xl font-bold mb-6"
+      <section className="pt-20 pb-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block mb-4 px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold uppercase tracking-wider rounded-full">
+            Free & Open Source
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
+            Learn AI & Machine Learning
+            <br />
+            from scratch.
+          </h1>
+          <p className="text-lg text-gray-500 max-w-xl mx-auto mb-8">
+            30 interactive lessons with animated diagrams and hands-on simulations. No prerequisites. Go from &quot;what is AI?&quot; to building production systems.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/learn/what-is-ai"
+              className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
             >
-              AI Learning{' '}
-              <span className="bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
-                Simulations
-              </span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-xl sm:text-2xl mb-8 text-sky-100"
+              Start Learning
+              <ArrowRight className="ml-2" size={20} />
+            </Link>
+            <Link
+              href="/learn"
+              className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-colors"
             >
-              Interactive visualizations to understand AI concepts through hands-on exploration
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Link
-                href="#simulations"
-                className="inline-flex items-center px-6 py-3 bg-white text-sky-600 font-semibold rounded-lg shadow-lg hover:bg-gray-50 transition-colors"
-              >
-                <Play className="mr-2" size={20} />
-                Start Learning
-              </Link>
-              <Link
-                href="https://devninja.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-sky-600 transition-colors"
-              >
-                Visit DevNinja.in
-              </Link>
-            </motion.div>
+              Browse Topics
+            </Link>
           </div>
         </div>
-      </motion.div>
+      </section>
 
-      {/* Simulations Grid */}
-      <section id="simulations" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Interactive Simulations
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Dive deep into AI concepts with our collection of interactive simulations.
-              Each simulation is designed to build understanding through visualization and experimentation.
-            </p>
-          </motion.div>
+      {/* Stats Bar */}
+      <section className="border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-3xl font-bold text-gray-900">30</div>
+              <div className="text-sm text-gray-500 mt-1">Lessons</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-gray-900">5</div>
+              <div className="text-sm text-gray-500 mt-1">Levels</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-gray-900">30+</div>
+              <div className="text-sm text-gray-500 mt-1">Simulations</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-gray-900">100%</div>
+              <div className="text-sm text-gray-500 mt-1">Free</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {simulations.map((simulation) => {
-              const IconComponent = simulation.icon
-              return (
-                <motion.div
-                  key={simulation.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                  className="group"
-                >
-                  <Link href={simulation.href} className="block">
-                    <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:border-sky-300 hover:shadow-xl transition-all duration-300">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="p-3 bg-gradient-to-r from-sky-500 to-blue-600 rounded-lg">
-                          <IconComponent className="text-white" size={24} />
-                        </div>
-                        <div className="text-right">
-                          <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                            {simulation.category}
-                          </span>
-                          <div className={`text-xs font-medium px-2 py-1 rounded-full mt-1 ${
-                            simulation.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
-                            simulation.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                            'bg-red-100 text-red-800'
-                          }`}>
-                            {simulation.difficulty}
-                          </div>
-                        </div>
+      {/* Learning Path Preview */}
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Your learning journey</h2>
+            <p className="text-lg text-gray-500">Progress through 5 carefully designed levels</p>
+          </div>
+
+          <div className="relative">
+            {/* Desktop: horizontal path with connecting lines */}
+            <div className="hidden md:flex items-center justify-between">
+              {levels.map((level, index) => {
+                const levelLessons = getLevelLessons(level.id);
+                return (
+                  <div key={level.id} className="flex items-center">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className={`w-16 h-16 rounded-full border-4 ${level.borderColor} bg-white flex items-center justify-center mb-3`}
+                      >
+                        <span className={`text-xl font-bold ${level.textColor}`}>
+                          {index + 1}
+                        </span>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-sky-600 transition-colors">
-                        {simulation.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {simulation.description}
-                      </p>
-                      <div className="mt-4 flex items-center text-sky-600 text-sm font-medium">
-                        Start Simulation
-                        <Play className="ml-1 group-hover:translate-x-1 transition-transform" size={16} />
+                      <div className="text-sm font-semibold text-gray-900 text-center max-w-[120px]">
+                        {level.name}
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1">
+                        {levelLessons.length} lessons
                       </div>
                     </div>
-                  </Link>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Interactive Learning?</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our simulations turn complex AI concepts into visual, hands-on experiences
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {[
-              {
-                title: 'Visual Learning',
-                description: 'See algorithms in action with real-time visualizations',
-                icon: '👁️'
-              },
-              {
-                title: 'Hands-on Exploration',
-                description: 'Experiment with parameters and observe the effects',
-                icon: '🔬'
-              },
-              {
-                title: 'Progressive Difficulty',
-                description: 'Start with basics and advance to complex concepts',
-                icon: '📈'
-              }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="text-center p-6"
-              >
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex justify-center items-center space-x-2 mb-4">
-              <Brain className="h-6 w-6 text-sky-400" />
-              <span className="text-lg font-bold">DevNinja AI Learning</span>
+                    {index < levels.length - 1 && (
+                      <div className="w-12 lg:w-24 h-0.5 bg-gray-200 mx-2" />
+                    )}
+                  </div>
+                );
+              })}
             </div>
-            <p className="text-gray-400 mb-4">
-              Part of the DevNinja.in ecosystem - Interactive AI education platform
-            </p>
-            <div className="flex justify-center space-x-6 text-sm">
-              <Link href="https://devninja.in" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                DevNinja.in
-              </Link>
-              <Link href="https://tools.devninja.in" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                Developer Tools
-              </Link>
-              <Link href="https://devninja.in/articles" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                Articles
-              </Link>
-              <Link href="https://devninja.in/#trending" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                Trending
-              </Link>
+
+            {/* Mobile: vertical stack without lines */}
+            <div className="md:hidden space-y-6">
+              {levels.map((level, index) => {
+                const levelLessons = getLevelLessons(level.id);
+                return (
+                  <div key={level.id} className="flex items-center gap-4">
+                    <div
+                      className={`w-14 h-14 rounded-full border-4 ${level.borderColor} bg-white flex items-center justify-center flex-shrink-0`}
+                    >
+                      <span className={`text-lg font-bold ${level.textColor}`}>
+                        {index + 1}
+                      </span>
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-gray-900">
+                        {level.name}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {levelLessons.length} lessons
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Featured Lessons */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Start here</h2>
+            <p className="text-lg text-gray-500">Popular lessons to begin your journey</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featuredLessons.map(lesson => {
+              if (!lesson) return null;
+              const levelInfo = levels.find(l => l.id === lesson.level);
+              const isReady = lesson.status === 'ready';
+
+              return (
+                <Link
+                  key={lesson.slug}
+                  href={isReady ? `/learn/${lesson.slug}` : '#'}
+                  className={`block bg-white rounded-xl border border-gray-200 p-6 transition-shadow ${
+                    isReady ? 'hover:shadow-lg cursor-pointer' : 'cursor-not-allowed opacity-75'
+                  }`}
+                >
+                  {levelInfo && (
+                    <div className={`inline-block px-2 py-1 ${levelInfo.bgColor} ${levelInfo.textColor} text-xs font-semibold rounded mb-3`}>
+                      {levelInfo.name}
+                    </div>
+                  )}
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    {lesson.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    {lesson.subtitle}
+                  </p>
+                  <div className={`text-sm font-medium ${isReady ? 'text-blue-600' : 'text-gray-400'}`}>
+                    {isReady ? 'Start →' : 'Coming soon'}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </div>
-  )
+  );
 }
