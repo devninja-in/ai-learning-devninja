@@ -318,7 +318,7 @@ export const lessons: LessonMeta[] = [
     level: 'production',
     estimatedMinutes: 30,
     prerequisites: ['inference-serving'],
-    status: 'coming-soon',
+    status: 'ready',
   },
 
   // Level 5: Agents & Frontier
