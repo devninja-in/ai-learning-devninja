@@ -380,7 +380,7 @@ export const lessons: LessonMeta[] = [
     level: 'agents-frontier',
     estimatedMinutes: 25,
     prerequisites: ['transformer-architecture'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 30,
