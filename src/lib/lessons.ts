@@ -17,6 +17,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'rnns-lstms': () => import('@/content/lessons/rnns-lstms/content'),
   'attention-mechanism': () => import('@/content/lessons/attention-mechanism/content'),
   'transformer-architecture': () => import('@/content/lessons/transformer-architecture/content'),
+  'large-language-models': () => import('@/content/lessons/large-language-models/content'),
 }
 
 export function getAvailableSlugs(): string[] {
