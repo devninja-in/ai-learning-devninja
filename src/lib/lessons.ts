@@ -15,6 +15,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'training-deep-networks': () => import('@/content/lessons/training-deep-networks/content'),
   'cnns': () => import('@/content/lessons/cnns/content'),
   'rnns-lstms': () => import('@/content/lessons/rnns-lstms/content'),
+  'attention-mechanism': () => import('@/content/lessons/attention-mechanism/content'),
 }
 
 export function getAvailableSlugs(): string[] {
