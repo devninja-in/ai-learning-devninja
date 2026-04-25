@@ -22,6 +22,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'rlhf-alignment': () => import('@/content/lessons/rlhf-alignment/content'),
   'prompt-engineering': () => import('@/content/lessons/prompt-engineering/content'),
   'peft-lora': () => import('@/content/lessons/peft-lora/content'),
+  'multimodal-ai': () => import('@/content/lessons/multimodal-ai/content'),
 }
 
 export function getAvailableSlugs(): string[] {
