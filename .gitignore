@@ -113,7 +113,7 @@ storybook-static/
 *.db
 *.sqlite
 *.sqlite3
-data/
+/data/
 prisma/dev.db*
 
 # AI/ML & Data files (for educational content)
