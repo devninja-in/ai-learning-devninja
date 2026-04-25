@@ -18,6 +18,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'attention-mechanism': () => import('@/content/lessons/attention-mechanism/content'),
   'transformer-architecture': () => import('@/content/lessons/transformer-architecture/content'),
   'large-language-models': () => import('@/content/lessons/large-language-models/content'),
+  'pretraining-finetuning': () => import('@/content/lessons/pretraining-finetuning/content'),
 }
 
 export function getAvailableSlugs(): string[] {
