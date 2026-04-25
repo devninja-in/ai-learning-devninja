@@ -142,7 +142,7 @@ export const lessons: LessonMeta[] = [
     level: 'foundations',
     estimatedMinutes: 35,
     prerequisites: ['math-intuition'],
-    status: 'coming-soon',
+    status: 'ready',
   },
 
   // Level 2: Deep Learning Core
