@@ -308,7 +308,7 @@ export const lessons: LessonMeta[] = [
     level: 'production',
     estimatedMinutes: 25,
     prerequisites: ['large-language-models'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 23,
