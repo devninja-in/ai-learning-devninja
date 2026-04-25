@@ -340,7 +340,7 @@ export const lessons: LessonMeta[] = [
     level: 'agents-frontier',
     estimatedMinutes: 35,
     prerequisites: ['prompt-engineering'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 26,
