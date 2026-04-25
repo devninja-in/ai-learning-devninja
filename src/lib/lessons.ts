@@ -28,6 +28,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'inference-serving': () => import('@/content/lessons/inference-serving/content'),
   'evaluation-benchmarks': () => import('@/content/lessons/evaluation-benchmarks/content'),
   'mlops-deployment': () => import('@/content/lessons/mlops-deployment/content'),
+  'rag-vector-search': () => import('@/content/lessons/rag-vector-search/content'),
 }
 
 export function getAvailableSlugs(): string[] {

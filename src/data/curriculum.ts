@@ -330,7 +330,7 @@ export const lessons: LessonMeta[] = [
     level: 'agents-frontier',
     estimatedMinutes: 30,
     prerequisites: ['large-language-models'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 25,
