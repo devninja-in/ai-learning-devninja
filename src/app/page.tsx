@@ -22,7 +22,7 @@ export default function HomePage() {
             from scratch.
           </h1>
           <p className="text-lg text-gray-500 max-w-xl mx-auto mb-8">
-            30 interactive lessons with animated diagrams and hands-on simulations. No prerequisites. Go from "what is AI?" to building production systems.
+            30 interactive lessons with animated diagrams and hands-on simulations. No prerequisites. Go from &quot;what is AI?&quot; to building production systems.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

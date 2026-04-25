@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { getLessonBySlug } from '@/data/curriculum'
 import { getAvailableSlugs, loadLessonContent } from '@/lib/lessons'
-import LessonPage from '@/components/lessons/LessonPage'
+import { LessonPage } from '@/components/lessons/LessonPage'
 import type { Metadata } from 'next'
 
 interface PageProps {
