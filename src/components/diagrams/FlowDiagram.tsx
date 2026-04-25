@@ -41,7 +41,7 @@ const nodeStyles = {
 
 export default function FlowDiagram({ nodes, title, animate = true }: FlowDiagramProps) {
   return (
-    <div className="bg-gray-900 rounded-xl p-6">
+    <div className="bg-gray-900 rounded-xl p-6 text-white">
       {title && (
         <h3 className="text-xl font-semibold text-white mb-6">{title}</h3>
       )}

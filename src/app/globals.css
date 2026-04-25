@@ -47,3 +47,25 @@
     @apply text-blue-600 underline underline-offset-2 hover:text-blue-800;
   }
 }
+
+/* Reset prose styles inside dark-background diagram and simulation containers */
+.prose-custom [class*="bg-gray-900"],
+.prose-custom [class*="bg-gray-800"] {
+  color: #fff;
+}
+.prose-custom [class*="bg-gray-900"] p,
+.prose-custom [class*="bg-gray-800"] p {
+  margin-bottom: 0.5rem;
+  color: inherit;
+  line-height: 1.5;
+}
+.prose-custom [class*="bg-gray-900"] h3,
+.prose-custom [class*="bg-gray-900"] h4 {
+  margin-top: 0;
+  color: #fff;
+}
+.prose-custom [class*="bg-gray-900"] ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}

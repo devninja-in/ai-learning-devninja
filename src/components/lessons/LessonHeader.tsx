@@ -26,9 +26,9 @@ export function LessonHeader({ lesson }: LessonHeaderProps) {
           Learning Path
         </Link>
         <ChevronRight className="w-4 h-4" />
-        <Link href={`/learn/${lesson.level}`} className="hover:text-gray-900 transition-colors">
+        <span className="text-gray-600">
           {levelInfo?.name || lesson.level}
-        </Link>
+        </span>
         <ChevronRight className="w-4 h-4" />
         <span className="text-gray-900">{lesson.title}</span>
       </nav>

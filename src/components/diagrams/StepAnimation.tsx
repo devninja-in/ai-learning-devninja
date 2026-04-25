@@ -53,7 +53,7 @@ export default function StepAnimation({ steps, className = '' }: StepAnimationPr
   };
 
   return (
-    <div className={`bg-gray-900 rounded-xl overflow-hidden ${className}`}>
+    <div className={`bg-gray-900 rounded-xl overflow-hidden text-white ${className}`}>
       <div className="min-h-[400px] relative">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div

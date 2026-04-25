@@ -60,7 +60,7 @@ export default function NetworkDiagram({ layers, activeLayer, title }: NetworkDi
   };
 
   return (
-    <div className="bg-gray-900 rounded-xl p-6">
+    <div className="bg-gray-900 rounded-xl p-6 text-white">
       {title && (
         <h3 className="text-xl font-semibold text-white mb-4">{title}</h3>
       )}

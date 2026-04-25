@@ -15,7 +15,7 @@ export function NextLesson({ currentLesson }: NextLessonProps) {
       {/* Next Lesson CTA */}
       {nextLesson && (
         <Link
-          href={`/learn/${nextLesson.level}/${nextLesson.slug}`}
+          href={`/learn/${nextLesson.slug}`}
           className="block group"
         >
           <div className="bg-gray-900 text-white rounded-lg p-6 hover:bg-gray-800 transition-colors">
@@ -43,7 +43,7 @@ export function NextLesson({ currentLesson }: NextLessonProps) {
             {relatedLessons.map((lesson) => (
               <Link
                 key={lesson.slug}
-                href={`/learn/${lesson.level}/${lesson.slug}`}
+                href={`/learn/${lesson.slug}`}
                 className="block p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-sm transition-all"
               >
                 <h4 className="font-medium text-gray-900 mb-1">
