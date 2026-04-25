@@ -246,7 +246,7 @@ export const lessons: LessonMeta[] = [
     level: 'llms-modern-ai',
     estimatedMinutes: 25,
     prerequisites: ['large-language-models'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 17,

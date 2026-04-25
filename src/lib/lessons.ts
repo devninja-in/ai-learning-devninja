@@ -20,6 +20,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'large-language-models': () => import('@/content/lessons/large-language-models/content'),
   'pretraining-finetuning': () => import('@/content/lessons/pretraining-finetuning/content'),
   'rlhf-alignment': () => import('@/content/lessons/rlhf-alignment/content'),
+  'prompt-engineering': () => import('@/content/lessons/prompt-engineering/content'),
 }
 
 export function getAvailableSlugs(): string[] {
