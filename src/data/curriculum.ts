@@ -298,7 +298,7 @@ export const lessons: LessonMeta[] = [
     level: 'production',
     estimatedMinutes: 35,
     prerequisites: ['quantization'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 22,

@@ -25,6 +25,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'multimodal-ai': () => import('@/content/lessons/multimodal-ai/content'),
   'model-internals': () => import('@/content/lessons/model-internals/content'),
   'quantization': () => import('@/content/lessons/quantization/content'),
+  'inference-serving': () => import('@/content/lessons/inference-serving/content'),
 }
 
 export function getAvailableSlugs(): string[] {
