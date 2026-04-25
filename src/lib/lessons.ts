@@ -12,6 +12,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'neural-networks': () => import('@/content/lessons/neural-networks/content'),
   'word-embeddings': () => import('@/content/lessons/word-embeddings/content'),
   'classical-ml': () => import('@/content/lessons/classical-ml/content'),
+  'training-deep-networks': () => import('@/content/lessons/training-deep-networks/content'),
 }
 
 export function getAvailableSlugs(): string[] {

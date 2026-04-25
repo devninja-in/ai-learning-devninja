@@ -164,7 +164,7 @@ export const lessons: LessonMeta[] = [
     level: 'deep-learning',
     estimatedMinutes: 30,
     prerequisites: ['neural-networks'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 9,
