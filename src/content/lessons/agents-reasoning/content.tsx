@@ -79,7 +79,7 @@ export default function AgentsReasoningContent() {
                 { id: 'think', label: 'Think', sublabel: 'Reason about what to do', type: 'process' },
                 { id: 'act', label: 'Act', sublabel: 'Call a tool or function', type: 'attention' },
                 { id: 'observe', label: 'Observe', sublabel: 'Get result from tool', type: 'process' },
-                { id: 'done', label: 'Done?', sublabel: 'Goal achieved or stuck?', type: 'decision' },
+                { id: 'done', label: 'Done?', sublabel: 'Goal achieved or stuck?', type: 'attention' },
                 { id: 'final', label: 'Final Answer', sublabel: 'Return result to user', type: 'output' },
               ]}
             />

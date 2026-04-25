@@ -410,7 +410,7 @@ export default function AISafetySim() {
                   <div className="text-center">
                     <div className="text-gray-600 mb-2">No messages yet</div>
                     <div className="text-sm text-gray-700">
-                      Select a scenario and click "Run" to see how safety systems work
+                      Select a scenario and click &ldquo;Run&rdquo; to see how safety systems work
                     </div>
                   </div>
                 </motion.div>

@@ -312,7 +312,7 @@ export default function AgentFrameworksContent() {
                         <div className="pl-4">tools: [searchTool, calculatorTool],</div>
                         <div className="pl-4">messages</div>
                         <div>&#125;);</div>
-                        <div className="mt-2 text-gray-400">// Handle tool calls, loop until done</div>
+                        <div className="mt-2 text-gray-400">{/* Handle tool calls, loop until done */}</div>
                       </div>
                     </div>
 
