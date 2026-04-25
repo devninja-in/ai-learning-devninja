@@ -23,6 +23,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'prompt-engineering': () => import('@/content/lessons/prompt-engineering/content'),
   'peft-lora': () => import('@/content/lessons/peft-lora/content'),
   'multimodal-ai': () => import('@/content/lessons/multimodal-ai/content'),
+  'model-internals': () => import('@/content/lessons/model-internals/content'),
 }
 
 export function getAvailableSlugs(): string[] {

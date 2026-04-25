@@ -278,7 +278,7 @@ export const lessons: LessonMeta[] = [
     level: 'production',
     estimatedMinutes: 35,
     prerequisites: ['transformer-architecture'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 20,
