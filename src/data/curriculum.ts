@@ -236,7 +236,7 @@ export const lessons: LessonMeta[] = [
     level: 'llms-modern-ai',
     estimatedMinutes: 30,
     prerequisites: ['pretraining-finetuning'],
-    status: 'coming-soon',
+    status: 'ready',
   },
   {
     number: 16,

@@ -19,6 +19,7 @@ const lessonModules: Record<string, () => Promise<LessonContent>> = {
   'transformer-architecture': () => import('@/content/lessons/transformer-architecture/content'),
   'large-language-models': () => import('@/content/lessons/large-language-models/content'),
   'pretraining-finetuning': () => import('@/content/lessons/pretraining-finetuning/content'),
+  'rlhf-alignment': () => import('@/content/lessons/rlhf-alignment/content'),
 }
 
 export function getAvailableSlugs(): string[] {
